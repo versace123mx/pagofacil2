@@ -18,7 +18,7 @@ class Escuela_model extends CI_Model
    
     $cadena='%d-%c-%Y';
        $query = $this->db->query('
-        select ta.id_t_usuarios,ta.nombre,ta.ap_paterno,tm.nombre as materia,tc.calificacion,tc.id_t_calificaciones,
+        select ta.id_t_usuarios,ta.nombre,ta.ap_paterno,tm.nombre as materia,tc.calificacion,tc.id_t_calificaciones as idCalificacion,
         date_format(tc.fecha_registro,"'.$cadena.'") as fecha_registros
         from t_alumnos as ta 
         inner join t_calificaciones as tc on ta.id_t_usuarios=tc.id_t_usuarios
