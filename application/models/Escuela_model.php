@@ -80,7 +80,7 @@ class Escuela_model extends CI_Model
    public function delete($id){
        $idcalificacion  = $id;
        $this->activo=0;
-       $result = $this->db->query('delete from t_calificaciones where id_t_calificaciones = "'.$id.'"');
+       $result = $this->db->query('delete from t_calificaciones where id_t_calificaciones = "'.$idcalificacion.'"');
        if($result)
        {
             $arreglo = array("success" => "ok","msg" => "calificacion eliminada");

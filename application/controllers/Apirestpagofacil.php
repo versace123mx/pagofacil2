@@ -76,9 +76,9 @@ class Apirestpagofacil extends \Restserver\Libraries\REST_Controller {
     public function user_delete()
     {
         $id = $this->input->get('idcalificacion');
-        if(!empty($data['idcalificacion'])){
+        if(!empty($id)){
     		$regex="/^[[:digit:]]+$/";
-    		if(preg_match($regex,$data['idcalificacion'])){
+    		if(preg_match($regex,$id)){
         		$r = $this->Escuela_model->delete($id);
         		$this->response($r); 
     		}
