@@ -1,0 +1,64 @@
+create database escuela;
+
+CREATE TABLE t_alumnos (
+  id_t_usuarios int(11) NOT NULL AUTO_INCREMENT,
+  nombre varchar(80) DEFAULT NULL,
+  ap_paterno varchar(80) DEFAULT NULL,
+  ap_materno varchar(80) DEFAULT NULL,
+  activo int(1) DEFAULT NULL,
+  PRIMARY KEY (id_t_usuarios)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE t_calificaciones (
+  id_t_calificaciones int(11) NOT NULL AUTO_INCREMENT,
+  id_t_materias int(11) NOT NULL,
+  id_t_usuarios int(11) NOT NULL,
+  calificacion decimal(10,2) DEFAULT NULL,
+  fecha_registro date DEFAULT NULL,
+  PRIMARY KEY (id_t_calificaciones),
+  KEY id_t_materias (id_t_materias),
+  CONSTRAINT t_calificaciones_ibfk_1 FOREIGN KEY (id_t_materias) REFERENCES t_materias (id_t_materias),
+  CONSTRAINT t_calificaciones_ibfk_2 FOREIGN KEY (id_t_materias) REFERENCES t_materias (id_t_materias)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE t_materias (
+  id_t_materias int(11) NOT NULL AUTO_INCREMENT,
+  nombre varchar(80) DEFAULT NULL,
+  activo int(1) DEFAULT NULL,
+  PRIMARY KEY (id_t_materias)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE keyss (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  keyss varchar(40) NOT NULL,
+  level int(2) NOT NULL,
+  ignore_limits tinyint(1) NOT NULL DEFAULT '0',
+  is_private_key tinyint(1) NOT NULL DEFAULT '0',
+  ip_addresses text,
+  date_created datetime NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+CREATE TABLE logs (
+  id int(11) NOT NULL,
+  uri varchar(255) NOT NULL,
+  method varchar(6) NOT NULL,
+  params text,
+  api_key varchar(40) NOT NULL,
+  ip_address varchar(45) NOT NULL,
+  time int(11) NOT NULL,
+  rtime float DEFAULT NULL,
+  authorized varchar(1) NOT NULL,
+  response_code smallint(3) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 
+
+insert into t_alumnos values (default,"John","Dow","Down",1);
+
+insert into t_materias values (default,'matematicas',1);
+insert into t_materias values (default,'programacion I',1);
+insert into t_materias values (default,'ingenieria de sofware',1);
+
