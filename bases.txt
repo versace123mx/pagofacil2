@@ -58,7 +58,7 @@ CREATE TABLE logs (
 
 insert into t_alumnos values (default,"John","Dow","Down",1);
 
-insert into t_materias values (default,'matematicas',1);
-insert into t_materias values (default,'programacion I',1);
-insert into t_materias values (default,'ingenieria de sofware',1);
+insert into t_materias values (1,'matematicas',1);
+insert into t_materias values (2,'programacion I',1);
+insert into t_materias values (3,'ingenieria de sofware',1);
 
