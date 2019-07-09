@@ -10,6 +10,14 @@ class Apirestpagofacil extends \Restserver\Libraries\REST_Controller {
         $this->load->model('Escuela_model');
     }
 
+    public static function validaNumero($id){
+    	$regex="/^[[:digit:]]+$/";
+      	if(!preg_match($regex,$id)){
+        	return false;
+    	}
+    	return true;
+    }
+
 	public function test_get()
     {
     	$array=array('Hola','Mundo','Codeigniter');
@@ -19,9 +27,7 @@ class Apirestpagofacil extends \Restserver\Libraries\REST_Controller {
     public function user_get()
     {
     	$id = $this->input->get('idusuario');
-    	
-    	$regex="/^[[:digit:]]+$/";
-      	if(!preg_match($regex,$id)){
+      	if(!isset($id) || empty($id) || !self::validaNumero($id)){
         	return "El id es un digito";
     	} else {
         	$r  = $this->Escuela_model->read($id);
